@@ -5,10 +5,12 @@ const ProfileSchema = new mongoose.Schema({
     type: String,
     required: [true, "Name is required"],
   },
-  tasks: {
-    type: mongoose.Types.ObjectId,
-    ref: "Task",
-  },
+  tasks: [
+    {
+      type: mongoose.Types.ObjectId,
+      ref: "Task",
+    },
+  ],
 });
 
 export const Profile = mongoose.model("Profile", ProfileSchema);

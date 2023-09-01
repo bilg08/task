@@ -6,9 +6,9 @@ const TaskSchema = new mongoose.Schema({
     type: String,
     required: [true, "Title is required"],
   },
-  about: {
+  description: {
     type: String,
-    required: [true, "About is required"],
+    required: [true, "Description is required"],
   },
   status: {
     type: String,
@@ -23,10 +23,11 @@ const TaskSchema = new mongoose.Schema({
   comments: [
     {
       type: mongoose.Types.ObjectId,
-      ref: "Task",
+      ref: "Comment",
       default: [],
     },
   ],
 });
-
+TaskSchema.index({ status: 1 });
+TaskSchema.index({ assignedTo: 1 });
 export const Task = mongoose.model("Task", TaskSchema);
