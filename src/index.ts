@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import { profileRouter, taskRouter, commentRouter } from "./routes";
 import { connectDB } from "./utils/index";
+import { errorHandler } from "./middleware/errorHandler";
 dotenv.config({ path: "./.env" });
 
 const app = express();
@@ -11,11 +12,12 @@ connectDB();
 app.get("/", (_req, res) => {
   res.send("Hello");
 });
-
+app.use(express.json());
 app.use("/profiles", profileRouter);
 app.use("/tasks", taskRouter);
 app.use("/comments", commentRouter);
 
+app.use(errorHandler);
 app.listen(port, () => {
   return console.log("Express is listening", port);
 });

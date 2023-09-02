@@ -1,10 +1,8 @@
 import { Request, Response } from "express";
-import { createProfile } from "../service";
+import { createProfile } from "../service/profile";
+import { asyncHandler } from "../middleware/asyncHandler";
 
-export const register = async (req: Request, res: Response) => {
-  try {
-    await createProfile(req.body);
-  } catch (error) {
-    return res.status(500).send("User already exist");
-  }
-};
+export const register = asyncHandler(async (req: Request, res: Response) => {
+  const profile = await createProfile(req.body);
+  return res.status(200).json({ data: profile });
+});

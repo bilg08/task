@@ -1,6 +1,5 @@
 import express from "express";
+import { register } from "../controller/index";
 export const profileRouter = express.Router();
 
-profileRouter.get("/", (_req, res) => {
-  return res.send("hello, users");
-});
+profileRouter.post("/", register);
