@@ -16,12 +16,12 @@ export const createTaskController = asyncHandler(
     const { assignedTo } = req.body;
     const requestedUserId = "64f2952feb9dd375608c2c74";
 
-    if (!assignedTo) {
-      req.body.assignedTo = requestedUserId;
+    if (assignedTo) {
+      const profileOfAssignedTo = await getProfile(assignedTo);
+      if (!profileOfAssignedTo)
+        throw new Error("AssignedTo's profile not found");
     }
-
-    const profileOfAssignedTo = await getProfile(assignedTo);
-    if (!profileOfAssignedTo) throw new Error("AssignedTo's profile not found");
+    req.body.assignedTo = requestedUserId;
     const task = await createTask(req.body);
     return response(true, res, task);
   },
