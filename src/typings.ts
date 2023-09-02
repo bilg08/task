@@ -8,8 +8,4 @@ export type createTaskDto = {
   description: string;
   assignedTo: string;
 };
-export type MODELS = {
-  Profile: "Profile";
-  Task: "Task";
-  Comment: "Comment";
-};
+export type MODELS = "Profile" | "Task" | "Comment";

@@ -1,11 +1,7 @@
 import mongoose from "mongoose";
 import { Response } from "express";
-import { Profile, Task } from "../model";
+import { MODELS } from "../typings";
 
-const models = {
-  Profile: Profile,
-  Task: Task,
-};
 export const connectDB = async () => {
   try {
     await mongoose.connect(process.env.mongodb_uri as string);
@@ -21,6 +17,8 @@ export const response = (success: boolean, res: Response, data?: any) => {
     ...(data && { data }),
   });
 };
+
+export const findItemExist = async (model: string, id: string) => {};
 
 export const convertStringToMongoObjectId = (id: string) =>
   new mongoose.Types.ObjectId(id);

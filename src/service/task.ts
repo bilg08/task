@@ -10,10 +10,16 @@ export const updateTask = async (id: string, body: createTaskDto) => {
   return await Task.findByIdAndUpdate(convertStringToMongoObjectId(id), body);
 };
 
-export const checkTaskExist = async (id: string) => {
+export const getTask = async (id: string) => {
   const task = await Task.findById(convertStringToMongoObjectId(id));
-  if (!task) {
-    return false;
-  }
-  return true;
+  return task;
+};
+
+export const getTasks = async () => {
+  const tasks = await Task.find();
+  return tasks;
+};
+
+export const deleteTask = async (id: string) => {
+  await Task.findOneAndDelete(convertStringToMongoObjectId(id));
 };

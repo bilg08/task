@@ -6,7 +6,8 @@
     "outDir": "dist",
     "sourceMap": true,
     "noImplicAny": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "lib": ["es6"]
   },
   "include": ["src/**/*"]
 }
