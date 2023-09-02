@@ -5,10 +5,12 @@ const TaskSchema = new mongoose.Schema({
   title: {
     type: String,
     required: [true, "Title is required"],
+    minLength: [1, "Title's length at least 1"],
   },
   description: {
     type: String,
     required: [true, "Description is required"],
+    minLength: [1, "Description's length at least 1"],
   },
   status: {
     type: String,

@@ -1,6 +1,5 @@
 import express from "express";
+import { createTaskController, updateTaskController } from "../controller/task";
 export const taskRouter = express.Router();
 
-taskRouter.get("/", (_req, res) => {
-  return res.send("hello, users");
-});
+taskRouter.route("/").post(createTaskController).put(updateTaskController);

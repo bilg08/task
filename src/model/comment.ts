@@ -4,6 +4,7 @@ const CommentSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
+    minLength: [1, "Title's length at least 1"],
   },
   taskId: {
     type: mongoose.Types.ObjectId,
