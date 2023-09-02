@@ -1,8 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import { profileRouter, taskRouter, commentRouter } from "./routes";
-import { connectDB } from "./utils/index";
-import { errorHandler } from "./middleware/errorHandler";
+import { connectDB } from "./utils";
+import { errorHandler } from "./middleware";
 
 dotenv.config({ path: "./.env" });
 

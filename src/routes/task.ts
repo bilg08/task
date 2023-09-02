@@ -2,6 +2,7 @@ import express from "express";
 import {
   createTaskController,
   deleteTaskController,
+  getTaskCommentsController,
   getTaskController,
   getTasksController,
   updateTaskController,
@@ -14,3 +15,5 @@ taskRouter
   .get(getTaskController)
   .put(updateTaskController)
   .delete(deleteTaskController);
+
+taskRouter.route("/:id/comments").get(getTaskCommentsController);

@@ -7,6 +7,7 @@ import {
   updateTask,
   getTasks,
   deleteTask,
+  getTaskComments,
 } from "../service/task";
 import { getProfile } from "../service/profile";
 
@@ -76,5 +77,17 @@ export const deleteTaskController = asyncHandler(
     if (!task) throw new Error("Task not exist");
     await deleteTask(id);
     return response(true, res);
+  },
+);
+
+export const getTaskCommentsController = asyncHandler(
+  async (req: Request, res: Response) => {
+    const { id: taskId } = req.params;
+    const task = await getTask(taskId);
+    if (!task) throw new Error("Task not found");
+
+    const comments = await getTaskComments(taskId);
+
+    response(true, res, comments);
   },
 );

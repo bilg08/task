@@ -6,6 +6,18 @@ export enum TaskTypes {
 export type createTaskDto = {
   title: string;
   description: string;
-  assignedTo: string;
+  assignedTo?: string;
 };
+
+export type createProfileDto = {
+  name: string;
+  email: string;
+};
+
+export type createCommentDto = {
+  title: string;
+  taskId: string;
+  userId: string;
+};
+
 export type MODELS = "Profile" | "Task" | "Comment";

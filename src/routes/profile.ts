@@ -1,5 +1,7 @@
 import express from "express";
-import { register } from "../controller/index";
+import { registerController } from "../controller/index";
+import { getProfileTasksController } from "../controller/profile";
 export const profileRouter = express.Router();
 
-profileRouter.post("/", register);
+profileRouter.post("/", registerController);
+profileRouter.get("/:id/tasks", getProfileTasksController);

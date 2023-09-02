@@ -1,6 +1,15 @@
 import express from "express";
+import {
+  createCommentController,
+  deleteCommentController,
+  getCommentController,
+  updateCommentController,
+} from "../controller/comment";
 export const commentRouter = express.Router();
 
-commentRouter.get("/", (_req, res) => {
-  return res.send("hello, users");
-});
+commentRouter.route("/").post(createCommentController);
+commentRouter
+  .route("/:id")
+  .get(getCommentController)
+  .put(updateCommentController)
+  .delete(deleteCommentController);

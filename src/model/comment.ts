@@ -8,12 +8,12 @@ const CommentSchema = new mongoose.Schema({
   },
   taskId: {
     type: mongoose.Types.ObjectId,
-    ref: "task",
+    ref: "Task",
     required: true,
   },
   userId: {
     type: mongoose.Types.ObjectId,
-    ref: "user",
+    ref: "Profile",
     required: true,
   },
 });
